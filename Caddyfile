@@ -1,12 +1,22 @@
 {
-    email cart@rhdesign.dk
-    acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+	email cart@rhdesign.dk
+	acme_ca https://acme-v02.api.letsencrypt.org/directory
 }
 
 uptime.int.rhdesign.dk {
-    reverse_proxy uptime-kuma:3010
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		resolvers 1.1.1.1 8.8.8.8
+		propagation_timeout 5m
+	}
+	reverse_proxy uptime-kuma:3010
 }
 
 bs.int.rhdesign.dk {
-    reverse_proxy 192.168.1.137:3030
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		resolvers 1.1.1.1 8.8.8.8
+		propagation_timeout 5m
+	}
+	reverse_proxy 192.168.1.137:3030
 }
