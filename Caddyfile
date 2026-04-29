@@ -1,5 +1,5 @@
 {
-    email rene.horslev@gmail.com
+    email cart@rhdesign.dk
     acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 }
 
