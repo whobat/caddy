@@ -40,6 +40,26 @@
 		}
 	}
 
+	@auth host auth.int.rhdesign.dk
+	handle @auth {
+		reverse_proxy https://192.168.1.149:9000 {
+			transport http {
+				tls
+				tls_insecure_skip_verify
+			}
+		}
+	}
+
+	@gw host gw.int.rhdesign.dk
+	handle @gw {
+		reverse_proxy https://192.168.1.1:443 {
+			transport http {
+				tls
+				tls_insecure_skip_verify
+			}
+		}
+	}
+
 	handle {
 		respond "Unknown subdomain" 404
 	}
