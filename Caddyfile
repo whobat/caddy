@@ -4,7 +4,7 @@
 }
 
 uptime.int.rhdesign.dk {
-    reverse_proxy uptime-kuma:3001
+    reverse_proxy uptime-kuma:3010
 }
 
 bs.int.rhdesign.dk {
