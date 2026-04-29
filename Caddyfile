@@ -10,6 +10,11 @@
 		propagation_timeout 5m
 	}
 
+	@auth host auth.int.rhdesign.dk
+	handle @auth {
+		reverse_proxy 192.168.1.149:9000
+	}
+
 	@bs host bs.int.rhdesign.dk
 	handle @bs {
 		reverse_proxy 192.168.1.137:3030
@@ -33,16 +38,6 @@
 	@pv1 host pv1.int.rhdesign.dk
 	handle @pv1 {
 		reverse_proxy https://192.168.1.41:8006 {
-			transport http {
-				tls
-				tls_insecure_skip_verify
-			}
-		}
-	}
-
-	@auth host auth.int.rhdesign.dk
-	handle @auth {
-		reverse_proxy https://192.168.1.149:9000 {
 			transport http {
 				tls
 				tls_insecure_skip_verify
