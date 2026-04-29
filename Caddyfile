@@ -1,22 +1,42 @@
+  GNU nano 6.2                                                                              Caddyfile
 {
-	email cert@rhdesign.dk
-	acme_ca https://acme-v02.api.letsencrypt.org/directory
+        email cart@rhdesign.dk
+        acme_ca https://acme-v02.api.letsencrypt.org/directory
+}
+bs.int.rhdesign.dk {
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+                resolvers 1.1.1.1 8.8.8.8
+                propagation_timeout 5m
+        }
+        reverse_proxy 192.168.1.137:3030
 }
 
 uptime.int.rhdesign.dk {
-	tls {
-		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-		resolvers 1.1.1.1 8.8.8.8
-		propagation_timeout 5m
-	}
-	reverse_proxy uptime-kuma:3001
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+                resolvers 1.1.1.1 8.8.8.8
+                propagation_timeout 5m
+        }
+        reverse_proxy uptime-kuma:3001
 }
 
-bs.int.rhdesign.dk {
-	tls {
-		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-		resolvers 1.1.1.1 8.8.8.8
-		propagation_timeout 5m
-	}
-	reverse_proxy 192.168.1.137:3030
+portainer.int.rhdesign.dk {
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+                resolvers 1.1.1.1 8.8.8.8
+                propagation_timeout 5m
+        }
+        reverse_proxy 192.168.1.56:9443
 }
+
+pv1.int.rhdesign.dk {
+        tls {
+                dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+                resolvers 1.1.1.1 8.8.8.8
+                propagation_timeout 5m
+        }
+        reverse_proxy 192.168.1.41:8006
+}
+
+
