@@ -1,5 +1,5 @@
 {
-	email cart@rhdesign.dk
+	email cert@rhdesign.dk
 	acme_ca https://acme-v02.api.letsencrypt.org/directory
 }
 
@@ -9,7 +9,7 @@ uptime.int.rhdesign.dk {
 		resolvers 1.1.1.1 8.8.8.8
 		propagation_timeout 5m
 	}
-	reverse_proxy uptime-kuma:3010
+	reverse_proxy uptime-kuma:3001
 }
 
 bs.int.rhdesign.dk {
